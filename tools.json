@@ -1,0 +1,36 @@
+[
+  {
+    "name": "run_biorhythm_engine",
+    "description": "Run the AxisOS Bio‑Rhythm Engine loop.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "initial_goal": {
+          "type": "string",
+          "description": "Agent goal, e.g. 'generate_report' or 'scan'.",
+          "default": "generate_report"
+        },
+        "delay_seconds": {
+          "type": "number",
+          "description": "Delay between beats in seconds.",
+          "default": 1.0
+        }
+      },
+      "required": []
+    }
+  },
+  {
+    "name": "map_bpm_to_mode",
+    "description": "Map BPM to qualitative mode (idle/active/alert).",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "bpm": {
+          "type": "integer",
+          "description": "Beats per minute."
+        }
+      },
+      "required": ["bpm"]
+    }
+  }
+]

@@ -1,0 +1,25 @@
+{
+  "name": "AxisOS-BioRhythm-Agent",
+  "version": "2.0",
+  "description": "Gemini agent wrapper for AxisOS Bio‑Rhythm Engine.",
+  "entrypoint": {
+    "module": "main",
+    "function": "app"
+  },
+  "runtime": {
+    "type": "cloud_run",
+    "port": 8080
+  },
+  "tools": [
+    {
+      "name": "biorhythm_engine",
+      "module": "biorhythm_engine",
+      "function": "run_biorhythm_engine"
+    },
+    {
+      "name": "state_mapper",
+      "module": "biorhythm_engine",
+      "function": "map_bpm_to_mode"
+    }
+  ]
+}

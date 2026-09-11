@@ -1,0 +1,48 @@
+# ============================================================
+# File:        agent.yaml
+# Description: Gemini Agent API configuration for AxisOS
+# Version:     2.0
+# ============================================================
+
+agent:
+  name: "AxisOS-BioRhythm-Agent"
+  version: "2.0"
+  description: "Heartbeat-driven agent for AxisOS Bio‑Rhythm Engine."
+
+identity:
+  persona: "PP"
+  tone: "architectural"
+  style: "precise"
+  lineage: "PP-CLI-v2"
+
+runtime:
+  entrypoint: "run_biorhythm_engine"
+  module: "biorhythm_engine"
+  cloud_run:
+    port: 8080
+    timeout_seconds: 300
+
+tools:
+  - name: "biorhythm_engine"
+    description: "Core heartbeat-driven state machine."
+    entrypoint: "run_biorhythm_engine"
+    module: "biorhythm_engine"
+
+  - name: "state_mapper"
+    description: "Maps BPM to qualitative agent mode."
+    entrypoint: "map_bpm_to_mode"
+    module: "biorhythm_engine"
+
+routes:
+  - path: "/run"
+    method: "POST"
+    handler: "run_biorhythm_engine"
+    description: "Trigger the Bio‑Rhythm Engine loop."
+
+logging:
+  level: "INFO"
+  format: "[pp-core] %(message)s"
+
+security:
+  allow_origins: ["*"]
+  require_api_key: false
